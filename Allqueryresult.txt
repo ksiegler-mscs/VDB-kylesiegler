@@ -1,0 +1,15 @@
+SELECT Apartment.Apartment_ID AS Expr2, Building.Building_ID AS Expr1, Building.*, Apartment.*, Building.Building_Name AS Expr3, Person.Person_ID AS Expr4, Person.*, Address_1.Address_ID AS Expr5, Address_1.*, 
+                  Person.Last_Name AS Expr6, Building_1.Building_ID AS Expr7, Address.Address_ID AS Expr8, Building_1.Building_Name AS Expr9, Address.Street_1 AS Expr10, Address.Street_2 AS Expr11, Address.City AS Expr12, Receipt.*, Invoice.*, 
+                  Invoice.InvoiceID AS Expr13, Receipt.Receipt_ID AS Expr14, LineItem.LineItem_ID, Product.Product_ID, LineItem.Qty, Product.Name, Product.Price, LineItem.Invoice_ID AS Expr15
+FROM     Product INNER JOIN
+                  LineItem ON Product.Product_ID = LineItem.Product_ID CROSS JOIN
+                  Receipt INNER JOIN
+                  Invoice ON Receipt.Invoice_ID = Invoice.InvoiceID CROSS JOIN
+                  Address AS Address_1 INNER JOIN
+                  Person ON Address_1.Address_ID = Person.Address_ID CROSS JOIN
+                  Building AS Building_1 INNER JOIN
+                  Address ON Building_1.Address_ID = Address.Address_ID CROSS JOIN
+                  Apartment INNER JOIN
+                  Building ON Apartment.Building_ID = Building.Building_ID
+WHERE  (LineItem.Invoice_ID = 1)
+ORDER BY Expr12, Expr6, Expr3

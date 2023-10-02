@@ -1,0 +1,30 @@
+SELECT LineItem.LineItem_ID, Product.Product_ID, Product.Name, Product.Price, LineItem.Qty, LineItem.Invoice_ID
+FROM     LineItem INNER JOIN
+                  Product ON LineItem.Product_ID = Product.Product_ID
+WHERE  (LineItem.Invoice_ID = 1)
+
+
+
+SELECT Person.*, Address.*, Person.Person_ID AS Expr1, Address.Address_ID AS Expr2, Person.Last_Name AS Expr3
+FROM     Person INNER JOIN
+                  Address ON Person.Address_ID = Address.Address_ID
+ORDER BY Expr3
+
+
+
+SELECT Receipt.Receipt_ID AS Expr2, Invoice.InvoiceID AS Expr1, Invoice.*, Receipt.*
+FROM     Receipt INNER JOIN
+                  Invoice ON Receipt.Invoice_ID = Invoice.InvoiceID
+
+
+SELECT Building.Building_ID, Address.Address_ID, Building.Building_Name, Address.Street_1, Address.Street_2, Address.City
+FROM     Building INNER JOIN
+                  Address ON Building.Address_ID = Address.Address_ID
+ORDER BY Address.City
+
+
+SELECT Building.*, Apartment.*, Apartment.Apartment_ID AS Expr1, Building.Building_ID AS Expr2, Building.Building_Name AS Expr3
+FROM     Apartment INNER JOIN
+                  Building ON Apartment.Building_ID = Building.Building_ID
+ORDER BY Expr3
+
